@@ -35,3 +35,9 @@
 - Destroy: Handles deleting a specific record
 - command that displays all the routes your application responds to: bin/rails routes
 - generate a `ProductsController with an index action: bin/rails generate controller Products index --skip-routes(as we created routes already)
+
+# Authentication
+- to generate: bin/rails generate authentication
+- migrate again: bin/rails db:migrate
+- to use authentication: bin/rails console
+- user.create!

@@ -2,7 +2,7 @@
 
 # You may also notice that Rails applications rarely use require statements like you may have seen in other programming languages. Rails uses naming conventions to require files automatically so you can focus on writing your application code.This is possible thanks to a couple of "Zeitwerk" loaders Rails sets up on your behalf, which provide autoloading, reloading, and eager loading.
 
-# Useful Command-
+# Useful Command for database-
 
 - to run migration: bin/rails db:migrate
 - to undo migration: bin/rails db:rollback
@@ -22,4 +22,16 @@
   - to delete a record: product.destroy
   - to check error: product.errors or product.errors.full_messages
 ]
-- if the console is running when you make updates to the code, you'll need to manually refresh it by running: reload! 
+- if the console is running when you make updates to the code, you'll need to manually refresh it by running: reload!
+
+
+# CRUD Action(7-routes)
+- Index: Shows all the records
+- New: Renders a form for creating a new record
+- Create: Processes the new form submission, handling errors and creating the record
+- Show: Renders a specific record for viewing
+- Edit: Renders a form for updating a specific record
+- Update: Handles the edit form submission, handling errors and updating the record
+- Destroy: Handles deleting a specific record
+- command that displays all the routes your application responds to: bin/rails routes
+- generate a `ProductsController with an index action: bin/rails generate controller Products index --skip-routes(as we created routes already)

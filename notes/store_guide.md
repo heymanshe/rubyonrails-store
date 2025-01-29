@@ -4,7 +4,22 @@
 
 # Useful Command-
 
-- to run migration- bin/rails db:migrate
-- to undo migration- bin/rails db:rollback
-- to generate a model named Product- bin/rails generate model Product name:string
-- 
+- to run migration: bin/rails db:migrate
+- to undo migration: bin/rails db:rollback
+- to generate a model named Product: bin/rails generate model Product name:string
+- to interact with tables: bin/rails console [
+  - to check columns: Product.column_names
+  - to create row: product = Product.new(name: "T-Shirt")
+  - to save: product.save
+  - to create and save in single call: Product.create(name: "Pants")
+  - to see(Rails also updates the object in memory with the database record id along with the created_at and updated_at timestamps. We can see that by printing out the product variable): product
+  - to query all: Product.all
+  - to filter the results: Product.where(name: "Pants")
+  - to sort records by name in ascending order: Product.order(name: :asc)
+  - to find one specific record by ID: Product.find(1)
+  - to update an existing record: product = Product.find(1) => product.update(name: "Shoes")
+  - alternate to this: product = Product.find(1) => product.name = "T-Shirt" => product.save
+  - to delete a record: product.destroy
+  - to check error: product.errors or product.errors.full_messages
+]
+- if the console is running when you make updates to the code, you'll need to manually refresh it by running: reload! 

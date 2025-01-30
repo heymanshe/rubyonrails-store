@@ -1,5 +1,5 @@
 module Authentication
-  extend ActiveSupport::Concern
+  extend ActiveSupport::Concern # makes it easier to mix in methods and callbacks into controllers
 
   included do
     before_action :require_authentication
@@ -7,7 +7,7 @@ module Authentication
   end
 
   class_methods do
-    def allow_unauthenticated_access(**options)
+    def allow_unauthenticated_access(**options) # used in controllers to bypass authentication for certain actions
       skip_before_action :require_authentication, **options
     end
   end
@@ -18,19 +18,19 @@ module Authentication
     end
 
     def require_authentication
-      resume_session || request_authentication
+      resume_session || request_authentication  # if returns nil, it redirects the user to the login page
     end
 
     def resume_session
-      Current.session ||= find_session_by_cookie
+      Current.session ||= find_session_by_cookie # Resumes an existing session
     end
 
     def find_session_by_cookie
-      Session.find_by(id: cookies.signed[:session_id]) if cookies.signed[:session_id]
+      Session.find_by(id: cookies.signed[:session_id]) if cookies.signed[:session_id]  # Finds session from database
     end
 
     def request_authentication
-      session[:return_to_after_authenticating] = request.url
+      session[:return_to_after_authenticating] = request.url  # Stores the requested URL before redirecting to the login page
       redirect_to new_session_path
     end
 

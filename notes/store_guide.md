@@ -41,3 +41,8 @@
 - migrate again: bin/rails db:migrate
 - to use authentication: bin/rails console
 - user.create!
+
+# Controllers
+- A controller is responsible for handling incoming HTTP requests from the browser, processing them (e.g., fetching  data from the database), and returning the appropriate response (HTML, JSON, etc.).
+- A controller acts as a bridge between the models (database logic) and views (user interface).
+

@@ -29,8 +29,10 @@ Rails.application.routes.draw do
 
   # delete "/products/:id", to: "products#destroy"
 
-  resources :products
-
+  resources :products do
+    resources :subscribers, only: [ :create ]
+    resource :unsubscribe, only: [ :show ]
+  end
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
